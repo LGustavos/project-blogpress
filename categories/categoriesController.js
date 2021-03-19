@@ -23,7 +23,11 @@ router.post('/categories/save', (req, res) => {
 });
 
 router.get('/admin/categories', (req, res) => {
-    res.status(200).render('admin/categories/index')
+    Category.findAll().then((categories) => {
+        res.status(200).render('admin/categories/index', {categories: categories})
+    }).catch((err) => {
+        console.log(err)
+    });
 });
 
 
