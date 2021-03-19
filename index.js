@@ -1,7 +1,9 @@
 const express = require('express');
 const connection = require('./database/database');
 const categoriesController = require('./categories/categoriesController');
+const Category = require('./categories/Category');
 const articlesController = require('./articles/articlesController');
+const Article = require('./articles/Article');
 const app = express();
 
 connection.authenticate()
