@@ -1,5 +1,7 @@
 const express = require('express');
 const connection = require('./database/database');
+const categoriesController = require('./categories/categoriesController');
+const articlesController = require('./articles/articlesController');
 const app = express();
 
 connection.authenticate()
@@ -13,10 +15,8 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.status(200).render("index");
-});
-
+app.use('/', categoriesController);
+app.use('/', articlesController);
 
 
 app.listen(4000, () => {
