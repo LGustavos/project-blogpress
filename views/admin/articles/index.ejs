@@ -14,11 +14,33 @@ include('../../partials/navbar.ejs'); -%>
 					<th>Id</th>
 					<th>Título</th>
 					<th>Slug</th>
-					<th>Ações</th>
 					<th>Categoria</th>
+					<th>Ações</th>
 				</tr>
 			</thead>
 			<tbody>
+                <% articles.forEach(article => { %>
+                    <td> <%=article.id%> </td>
+					<td> <%=article.title%> </td>
+					<td> <%=article.slug%> </td>
+					<td> <%=article.category.title%> </td>
+					<th style="width: 173px">
+						<form
+							method="POST"
+							action="/article/delete"
+							class="d-flex justify-content-center"
+							onsubmit="confirmDelete(event, this)"
+						>
+							<input
+								type="hidden"
+								name="id"
+								value="<%= article.id %>"
+								class="invisible"
+							/>
+							<button class="btn btn-danger"><img src="/assets/img/trash.svg" alt="Deletar" width="20" height="20"></button>
+						</form>
+					</th>
+                <% }) %> 
 			</tbody>
 		</table>
 	</div>
@@ -28,7 +50,7 @@ include('../../partials/navbar.ejs'); -%>
 <script>
 	function confirmDelete(event, form) {
 		event.preventDefault()
-		const decision = confirm("Você deseja realmente deletar essa categoria:")
+		const decision = confirm("Você deseja realmente deletar esse artigo?")
 		if (decision) {
 			form.submit()
 		}
