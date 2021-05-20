@@ -27,7 +27,7 @@ include('../../partials/navbar.ejs'); -%>
 						<form
 							method="POST"
 							action="/categories/delete"
-							class="flex"
+							class="d-flex justify-content-center"
 							onsubmit="confirmDelete(event, this)"
 						>
 							<input
@@ -36,10 +36,10 @@ include('../../partials/navbar.ejs'); -%>
 								value="<%= category.id %>"
 								class="invisible"
 							/>
-							<a href="categories/edit/<%= category.id %>" class="btn btn-warning"
-								>Editar</a
+							<a href="categories/edit/<%= category.id %>" class="btn btn-warning mr-2"
+								><img src="/assets/img/pencil-square.svg" alt="Editar" width="30" height="30"></a
 							>
-							<button class="btn btn-danger">Deletar</button>
+							<button class="btn btn-danger"><img src="/assets/img/trash.svg" alt="Deletar" width="30" height="30"></button>
 						</form>
 					</th>
 				</tr>
